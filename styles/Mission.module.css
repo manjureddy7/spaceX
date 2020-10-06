@@ -1,0 +1,24 @@
+.imageContainer {
+    background-image: url(../public/sapce.jpeg);
+    background-size: contain;
+    height: 100px;
+    width: 100%;
+}
+.missionContainer {
+    margin: 10px;
+    padding: 15px;
+    background-color: white;
+}
+
+.missionName {
+    color: #12276c;
+    font-weight: 700;
+}
+
+.textBold {
+    font-weight: 700;
+}
+
+.textBlue {
+    color: #12276c;
+}

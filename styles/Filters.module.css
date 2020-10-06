@@ -1,0 +1,17 @@
+.filterContainer {
+    background-color: white;
+    padding: 10px;
+}
+
+.yearHeader {
+    text-align: center;
+    border-bottom: 1px solid;
+}
+
+.yearBtn {
+    margin: 10px;
+}
+
+.filterSubContainer {
+    padding: 10px;
+}
