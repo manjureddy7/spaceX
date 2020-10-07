@@ -14,7 +14,7 @@ const SuccessfulLanding = () => {
             {SUCCESSFUL_LANDING.map((successfulLanding,index)=>{
                 return(
                     <div className="col-sm-6 col-6" key={index}>
-                        <button disabled="true" className={`btn btn-success ${styles.yearBtn}`} key={index} onClick={() => selectedLandingVal(successfulLanding)}>{successfulLanding}</button>
+                        <button disabled={true} className={`btn btn-success ${styles.yearBtn}`} key={index} onClick={() => selectedLandingVal(successfulLanding)}>{successfulLanding}</button>
                     </div>
                 )
             })}

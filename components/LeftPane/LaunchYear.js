@@ -2,15 +2,15 @@ import React from 'react';
 import { LAUNCH_YEARS } from '../../constants';
 import styles from '../../styles/Filters.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { getLayunchYearMissions, setSelectedYearConfig } from '../../store/slices/mission';
+import { setSelectedYear, getFilteredLaunchMissions } from '../../store/slices/mission';
 
 const LaunchYear = () => {
 
     const { selectedyear } = useSelector(state => state.missions);
     const dispatch = useDispatch()
     const selectedLaunchYear = (year) => {
-        dispatch(getLayunchYearMissions(year));
-        dispatch(setSelectedYearConfig(year))
+        dispatch(setSelectedYear({selectedYear: year}));
+        dispatch(getFilteredLaunchMissions());
     }
     return(
         <>

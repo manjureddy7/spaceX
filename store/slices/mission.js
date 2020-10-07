@@ -9,7 +9,9 @@ const missionSlice = createSlice({
         error: '',
         selectedyear: '',
         selectedSuccessLaunch: '',
-        selectedSuccessLanding: ''
+        selectedSuccessLanding: '',
+        launchYear: '',
+        launchSuccess: ''
     },
     reducers: {
         setLoading(state,action){
@@ -23,14 +25,6 @@ const missionSlice = createSlice({
         setMissionData: (state,action) => {
             const { missions } = action.payload;
             state.missions = [];
-            state.missions = [...missions];
-        },
-        setLaunchYearMissionData: (state, action) => {
-            const { missions } = action.payload;
-            state.missions = [...missions];
-        },
-        setSuccessLaunchMissionData: (state, action) => {
-            const { missions } = action.payload;
             state.missions = [...missions];
         },
         setSelectedYear: (state,action) => {
@@ -49,6 +43,8 @@ const missionSlice = createSlice({
             state.selectedyear = '';
             state.selectedSuccessLanding = '';
             state.selectedSuccessLaunch = '';
+            state.launchYear = '';
+            state.launchSuccess = '';
         }
     }
 })
@@ -62,87 +58,40 @@ export const {
     setSelectedYear,
     setSelectedSuccessLaunch,
     setSelectedSuccessLanding,
-    resetSelections
+    resetSelections,
     } = missionSlice.actions;
 export default missionSlice.reducer;
 
 
-// Call external Api here
-
-export const getAllMissions = () => async(dispatch) => {
+export const getFilteredLaunchMissions = () => async(dispatch, state) => {
+    const selectedYear = state().missions.selectedyear;
+    const launchStatus = state().missions.selectedSuccessLaunch;
+    const boolVal = launchStatus === 'True' ? true : false;
     try {
-        dispatch(setLoading({loading: true}));
+        if(selectedYear.toString().length > 0 && launchStatus.length > 0) {
+            const url = `${ALL_PROGRAMMS}&launch_success=${boolVal}&launch_year=${selectedYear}`;
+            const jsonData = await fetch(url);
+            const missions = await jsonData.json();
+            dispatch(setMissionData({missions}));
+            return;
+        }
+        if(selectedYear.toString().length > 0) {
+            const url = `${ALL_PROGRAMMS}&launch_year=${selectedYear}`;
+            const jsonData = await fetch(url);
+            const missions = await jsonData.json();
+            dispatch(setMissionData({missions}));
+            return;
+        }
+        if(launchStatus.toString().length > 0) {
+            const url = `${ALL_PROGRAMMS}&launch_success=${boolVal}`;
+            const jsonData = await fetch(url);
+            const missions = await jsonData.json();
+            dispatch(setMissionData({missions}));
+            return;
+        }
         const jsonData = fetch(ALL_PROGRAMMS).then(res => res.json());
         const missions = await jsonData;
         dispatch(setMissionData({missions}));
-        dispatch(setLoading({loading: false}));
-
-    }catch(error) {
-        dispatch(setError({error}));
-        dispatch(setLoading({loading: false}));
-    }
-}
-
-export const getLayunchYearMissions = (year) => async(dispatch) => {
-    try {
-        dispatch(setLoading({loading: true}));
-        const jsonData = fetch(`${ALL_PROGRAMMS}&launch_year=${year}`).then(res => res.json());
-        const missions = await jsonData;
-        dispatch(setMissionData({missions}));
-        dispatch(setLoading({loading: false}));
-
-    }catch(error) {
-        dispatch(setError({error}));
-        dispatch(setLoading({loading: false}));
-    }
-}
-
-export const getSuccessfulLaunchMissions = (val) => async(dispatch) => {
-    const boolVal = val === 'True' ? true : false;
-    try {
-        dispatch(setLoading({loading: true}));
-        const jsonData = fetch(`${ALL_PROGRAMMS}&launch_success=${boolVal}`).then(res => res.json());
-        const missions = await jsonData;
-        dispatch(setMissionData({missions}));
-        dispatch(setLoading({loading: false}));
-
-    }catch(error) {
-        dispatch(setError({error}));
-        dispatch(setLoading({loading: false}));
-    }
-}
-
-export const setSelectedYearConfig = (selectedYear) => async(dispatch) => {
-    try {
-        dispatch(setLoading({loading: true}));
-        
-        dispatch(setSelectedYear({selectedYear}));
-        dispatch(setLoading({loading: false}));
-
-    }catch(error) {
-        dispatch(setError({error}));
-        dispatch(setLoading({loading: false}));
-    }
-}
-
-export const setSelectedSuccessLaunchConfig = (selectedSuccessLaunch) => async(dispatch) => {
-    try {
-        dispatch(setLoading({loading: true}));
-        
-        dispatch(setSelectedSuccessLaunch({selectedSuccessLaunch}));
-        dispatch(setLoading({loading: false}));
-
-    }catch(error) {
-        dispatch(setError({error}));
-        dispatch(setLoading({loading: false}));
-    }
-}
-
-export const setSelectedSuccessLandingConfig = (selectedSuccessLanding) => async(dispatch) => {
-    try {
-        dispatch(setLoading({loading: true}));
-        
-        dispatch(setSelectedSuccessLanding({selectedSuccessLanding}));
         dispatch(setLoading({loading: false}));
 
     }catch(error) {

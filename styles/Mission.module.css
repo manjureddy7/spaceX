@@ -1,7 +1,7 @@
 .imageContainer {
     background-image: url(../public/sapce.jpeg);
     background-size: contain;
-    height: 100px;
+    height: 150px;
     width: 100%;
 }
 .missionContainer {

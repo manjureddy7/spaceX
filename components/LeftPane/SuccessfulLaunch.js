@@ -1,15 +1,15 @@
 import React from 'react';
 import { SUCCESSFUL_LAUNCH } from '../../constants';
 import styles from '../../styles/Filters.module.css';
-import { getSuccessfulLaunchMissions, setSelectedSuccessLaunchConfig } from '../../store/slices/mission';
+import { setSelectedSuccessLaunch, getFilteredLaunchMissions } from '../../store/slices/mission';
 import { useDispatch, useSelector } from 'react-redux';
 
 const SuccessfulLaunch = () => {
     const dispatch = useDispatch()
     const { selectedSuccessLaunch } = useSelector(state => state.missions);
     const selectedLaunchVal = (val) => {
-        dispatch(getSuccessfulLaunchMissions(val))
-        dispatch(setSelectedSuccessLaunchConfig(val))
+        dispatch(setSelectedSuccessLaunch({selectedSuccessLaunch: val}))
+        dispatch(getFilteredLaunchMissions())
     }
     return(
         <div className={styles.filterSubContainer}>

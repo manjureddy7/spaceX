@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllMissions } from '../../store/slices/mission';
+import { getFilteredLaunchMissions } from '../../store/slices/mission';
 import Mission from './Mission';
 import styles from '../../styles/Programms.module.css'
 
@@ -10,7 +10,7 @@ const Programms = () => {
     const { error, loading, missions } = useSelector(state => state.missions);
 
     useEffect(() => {
-        dispatch(getAllMissions())
+        dispatch(getFilteredLaunchMissions())
     }, []);
 
     return(
