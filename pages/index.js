@@ -3,6 +3,10 @@ import styles from '../styles/Home.module.css'
 import Filters from '../components/LeftPane/Filters'
 import Programms from '../components/RightPane/Programms'
 
+// Lets divide app into TWO panes (left & right)
+// Left Pane talks about filters
+// Right Pane lists all the missions
+
 export default function Home() {
 
   return (

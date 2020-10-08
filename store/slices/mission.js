@@ -1,6 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ALL_PROGRAMMS } from '../../api/url'
 
+// Creating slice gives us power to create reducer functions & actions on the fly
+// Reduxjs/toolkit under the hood uses immer.js so we can directly mutate our store state
+
+// This is an individual slice
+
+
 const missionSlice = createSlice({
     name: 'mission',
     initialState: {
@@ -63,6 +69,7 @@ export const {
 export default missionSlice.reducer;
 
 
+// This function will be responsible for filtering & getting Data
 export const getFilteredLaunchMissions = () => async(dispatch, state) => {
     const selectedYear = state().missions.selectedyear;
     const launchStatus = state().missions.selectedSuccessLaunch;
@@ -100,6 +107,8 @@ export const getFilteredLaunchMissions = () => async(dispatch, state) => {
     }
 }
 
+// This function will be responsible to restting the currently applied filters
+// so that user can do multiple operations
 export const resetAllSelections = () => async(dispatch) => {
     try {
         dispatch(setLoading({loading: true}));
