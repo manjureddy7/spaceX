@@ -17,4 +17,4 @@
 
 ## Run
 - Run 'yarn dev' to start application. Headover to http://localhost:3000 to see App up and running
-- Run 'yarn test' to run unit test cases
+- Run 'yarn test' to run unit test cases :+1:
