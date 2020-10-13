@@ -6,3 +6,8 @@
     padding: 20px;
     background-color: white;
 }
+.programmsContainer {
+    height: 80vh;
+    overflow: scroll;
+    overflow-x: hidden;
+}

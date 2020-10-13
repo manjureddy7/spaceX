@@ -11,7 +11,7 @@ const ResetAllFilters = () => {
     }
     return(
         <>
-            <button className="btn btn-danger" onClick={resetFilters}>Clear all Filters</button>
+            <button className="btn btn-danger" style={{marginLeft: '30%'}} onClick={resetFilters}>Clear all Filters</button>
         </>
     )
 }

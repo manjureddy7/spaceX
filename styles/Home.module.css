@@ -13,4 +13,7 @@
 
 .mainHeader {
   margin-bottom: 10px;
+  text-align: center;
+  padding: 20px;
+  color: slategrey;
 }

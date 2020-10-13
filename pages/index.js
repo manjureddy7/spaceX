@@ -26,7 +26,7 @@ export default function Home() {
         </div>
       </main>
       <footer className={styles.footer}>
-        <p>Developed by Manoj Kumar G.</p>
+        <code><strong>Developed by Manoj Kumar G.</strong></code>
       </footer>
     </div>
   )

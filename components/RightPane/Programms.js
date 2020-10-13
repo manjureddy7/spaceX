@@ -14,7 +14,7 @@ const Programms = () => {
     }, []);
 
     return(
-        <div>
+        <div className={styles.programmsContainer}>
             {loading && <p>Loading....</p>}
             {error && <p>An error has occured</p>}
             {missions.length > 0 ? <h5>Total launch Programms {missions.length}</h5> : null}
