@@ -5,24 +5,24 @@ const Mission = ({missionDetails}) => {
     const {image,missionName,missionIds,launchYear,successfulLaunch,successfulLanding} = missionDetails;
 
     return(
-        <div className={styles.missionContainer}>
-            <div className={styles.imageContainer}></div>
-            <p className={styles.missionName}>{missionName}</p>
+        <div className={styles.MissionContainer}>
+            <div className={styles.ImageContainer}></div>
+            <p className={styles.MissionName}>{missionName}</p>
             <p>
-                <span className={styles.textBold}>Mission ids:</span>
-                <span className={styles.textBlue}>{missionIds.length > 0 ? missionIds : ''}</span>
+                <span className={styles.TextBold}>Mission ids:</span>
+                <span className={styles.TextBlue}>{missionIds.length > 0 ? missionIds : ''}</span>
             </p>
             <p>
-                <span className={styles.textBold}>Launch Year: </span>
-                <span className={styles.textBlue}>{launchYear}</span>
+                <span className={styles.TextBold}>Launch Year: </span>
+                <span className={styles.TextBlue}>{launchYear}</span>
             </p>
             <p>
-                <span className={styles.textBold}>Successful Launch: </span>
-                <span className={styles.textBlue}>{successfulLaunch ? 'True': 'False'}</span>
+                <span className={styles.TextBold}>Successful Launch: </span>
+                <span className={styles.TextBlue}>{successfulLaunch ? 'True': 'False'}</span>
             </p>
             <p>
-                <span className={styles.textBold}>Successful Landing: </span>
-                <span className={styles.textBlue}>{successfulLanding}</span>
+                <span className={styles.TextBold}>Successful Landing: </span>
+                <span className={styles.TextBlue}>{successfulLanding}</span>
             </p>
         </div>
     )
