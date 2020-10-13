@@ -1,3 +1,5 @@
+# SpaceX :fire:
+
 ## Application Structure
 
 - Application contains Left Pane & Right Pane.
@@ -10,7 +12,7 @@
 - Currently the image src from api (links/mission_patch) is not working. So I have added new default image
 
 ## Stacks
-- Nextjs with ReduxToolkit (which makes state management lot easier)
+- Nextjs with ReduxToolkit (which makes state management lot easier :heart:)
 - Testing Libray to test Components
 
 ## Run
