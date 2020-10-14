@@ -14,6 +14,8 @@ const Programms = () => {
     }, []);
 
     return(
+        <>
+        {loading && <h1>Loading Missions...</h1>}
         <div className={styles.programmsContainer}>
             {missions.length > 0 ? <h5>Total launch Programms {missions.length}</h5> : null}
             <div className="row">
@@ -35,6 +37,7 @@ const Programms = () => {
                 }) : <p className={styles.noProgramms}>No Missions</p>}
             </div>
         </div>
+        </>
     )
 }
 
