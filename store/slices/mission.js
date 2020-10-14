@@ -75,11 +75,13 @@ export const getFilteredLaunchMissions = () => async(dispatch, state) => {
     const launchStatus = state().missions.selectedSuccessLaunch;
     const boolVal = launchStatus === 'True' ? true : false;
     try {
+        dispatch(setLoading({loading: true}));
         if(selectedYear.toString().length > 0 && launchStatus.length > 0) {
             const url = `${ALL_PROGRAMMS}&launch_success=${boolVal}&launch_year=${selectedYear}`;
             const jsonData = await fetch(url);
             const missions = await jsonData.json();
             dispatch(setMissionData({missions}));
+            dispatch(setLoading({loading: false}));
             return;
         }
         if(selectedYear.toString().length > 0) {
@@ -87,6 +89,7 @@ export const getFilteredLaunchMissions = () => async(dispatch, state) => {
             const jsonData = await fetch(url);
             const missions = await jsonData.json();
             dispatch(setMissionData({missions}));
+            dispatch(setLoading({loading: false}));
             return;
         }
         if(launchStatus.toString().length > 0) {
@@ -94,6 +97,7 @@ export const getFilteredLaunchMissions = () => async(dispatch, state) => {
             const jsonData = await fetch(url);
             const missions = await jsonData.json();
             dispatch(setMissionData({missions}));
+            dispatch(setLoading({loading: false}));
             return;
         }
         const jsonData = fetch(ALL_PROGRAMMS).then(res => res.json());

@@ -15,7 +15,7 @@ const Programms = () => {
 
     return(
         <>
-        {loading && <h1>Loading Missions...</h1>}
+        {loading && <h3>Loading Missions...</h3>}
         <div className={styles.programmsContainer}>
             {missions.length > 0 ? <h5>Total launch Programms {missions.length}</h5> : null}
             <div className="row">
